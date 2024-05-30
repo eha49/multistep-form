@@ -8,12 +8,12 @@ function SidePanel() {
         {LANDMARK_SEQUENCE.map((option, index) => {
           const step = index + 1;
           return (
-            <Step key={option}>
+            <Step key={option.id}>
               <StepIndexIcon>{step}</StepIndexIcon>
               <div>
                 <StepLabel>STEP {step}</StepLabel>
                 <StepDescription>
-                  {option.toUpperCase()}
+                  {option.label.toUpperCase()}
                 </StepDescription>
               </div>
             </Step>

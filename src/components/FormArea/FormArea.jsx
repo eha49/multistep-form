@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import PersonalInfoForm from "../PersonalInfoForm/PersonalInfoForm";
+import UserInfoProvider from "../UserInfoProvider/UserInfoProvider";
 
 function FormArea() {
   return (
-    <FromWrapper>
-      <InnerWrapper>
-        <PersonalInfoForm />
-      </InnerWrapper>
-    </FromWrapper>
+    <UserInfoProvider>
+      <FromWrapper>
+        <InnerWrapper>
+          <PersonalInfoForm />
+        </InnerWrapper>
+      </FromWrapper>
+    </UserInfoProvider>
   );
 }
 
@@ -20,8 +23,9 @@ const InnerWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding-top: 20px;
-  padding-left: var(--padding);
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export default FormArea;

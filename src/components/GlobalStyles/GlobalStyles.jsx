@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
         --weight-medium: 500;
         --weight-bold: 700;
 
-        --Marine-blue: hsl(213, 96%, 18%);
+        --marine-blue: hsl(213, 96%, 18%);
         --purplish-blue: hsl(243, 100%, 62%);
         --pastel-blue: hsl(228, 100%, 84%);
         --light-blue: hsl(206, 94%, 87%);

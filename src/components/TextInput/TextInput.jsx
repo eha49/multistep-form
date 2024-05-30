@@ -1,7 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-function TextInput({ type, label, value, onChange, ...delegated }) {
+function TextInput({
+  type,
+  label,
+  name,
+  value,
+  onChange,
+  ...delegated
+}) {
   const id = React.useId();
   return (
     <>
@@ -9,6 +16,7 @@ function TextInput({ type, label, value, onChange, ...delegated }) {
       <Input
         type={type}
         id={id}
+        name={name}
         value={value}
         onChange={onChange}
         {...delegated}
@@ -31,6 +39,9 @@ const Input = styled.input`
 
   &:focus-visible {
     outline: 1px solid var(--purplish-blue);
+  }
+  &::placeholder {
+    color: var(--cool-gray);
   }
 `;
 

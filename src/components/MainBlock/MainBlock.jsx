@@ -12,16 +12,17 @@ function MainBlock() {
 }
 
 export const Wrapper = styled.div`
-  --padding: 12px;
+  --spacing: 12px;
   --radius: 6px;
   width: min(800px, 95%);
   margin-left: auto;
   margin-right: auto;
   min-height: 500px;
-  padding: var(--padding);
+  padding: var(--spacing);
   display: flex;
+  gap: var(--spacing);
   background-color: var(--white);
-  border-radius: calc(var(--padding) + var(--radius));
+  border-radius: calc(var(--spacing) + var(--radius));
 `;
 
 export default MainBlock;
