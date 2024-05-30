@@ -14,7 +14,7 @@ function MainBlock() {
 export const Wrapper = styled.div`
   --padding: 12px;
   --radius: 6px;
-  width: 95%;
+  width: min(800px, 95%);
   margin-left: auto;
   margin-right: auto;
   min-height: 500px;
