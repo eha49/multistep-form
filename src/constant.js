@@ -11,3 +11,10 @@ export const QUERIES = {
   tabletAndSmaller: `(max-width: ${BREAKPOINTS.tablet / 16}rem)`,
   laptopAndSmaller: `(max-width: ${BREAKPOINTS.laptop / 16}rem)`,
 };
+
+export const LANDMARK_SEQUENCE = [
+  "your info",
+  "select plan",
+  "add-ons",
+  "summary",
+];

@@ -26,6 +26,16 @@ const GlobalStyles = createGlobalStyle`
         --white: hsl(0, 0%, 100%);
     }
 
+    p, ol, li {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    ol, li {
+        list-style: none;
+    }
+
 `;
 
 export default GlobalStyles;
