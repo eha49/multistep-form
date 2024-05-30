@@ -24,9 +24,16 @@ const GlobalStyles = createGlobalStyle`
         --magnolia: hsl(217, 100%, 97%);
         --alabaster: hsl(231, 100%, 99%);
         --white: hsl(0, 0%, 100%);
+
+        height: 100%;
     }
 
-    p, ol, li {
+    body {
+        height: 100%;
+        background-color: var(--magnolia);
+    }
+
+    body, h1, p, ol, li {
         margin: 0;
         padding: 0;
         border: 0;

@@ -3,7 +3,7 @@ import { LANDMARK_SEQUENCE } from "../../constant";
 
 function SidePanel() {
   return (
-    <Wrapper>
+    <SidePanelWrapper>
       <ol>
         {LANDMARK_SEQUENCE.map((option, index) => {
           const step = index + 1;
@@ -20,16 +20,19 @@ function SidePanel() {
           );
         })}
       </ol>
-    </Wrapper>
+    </SidePanelWrapper>
   );
 }
 
-const Wrapper = styled.aside`
+const SidePanelWrapper = styled.aside`
   background-color: var(--purplish-blue);
-  border-radius: 6px;
+  border-radius: var(--radius);
   color: var(--white);
   padding-top: 30px;
   padding-left: 25px;
+
+  flex-basis: 210px;
+  flex-shrink: 0;
 `;
 
 const Step = styled.li`
