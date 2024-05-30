@@ -7,6 +7,7 @@ export const Button = styled.button`
   background-color: var(--marine-blue);
   color: var(--white);
   font-size: 0.8rem;
+  justify-self: flex-end;
 
   &:hover {
     background-color: var(--purplish-blue);
@@ -24,6 +25,7 @@ export const LinkButton = styled(Button)`
   background-color: transparent;
   color: var(--cool-gray);
   font-weight: var(--weight-bold);
+  justify-self: flex-start;
 
   &:hover {
     color: var(----marine-blue);

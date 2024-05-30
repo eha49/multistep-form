@@ -5,14 +5,20 @@ import FormDescription from "../FormDescription/FormDescription";
 import TextInput from "../TextInput/TextInput";
 import { Button, LinkButton } from "../Button/Button";
 import { UserInfoContext } from "../UserInfoProvider/UserInfoProvider";
+import { PageContext } from "../PageProvider/PageProvider";
+import { goToPage } from "../../helpers";
 
-function PersonalInfoForm() {
+function PersonalInfoForm({ item }) {
   const { user, handleChange } = React.useContext(UserInfoContext);
+  const { changePageId } = React.useContext(PageContext);
+
   return (
     <Form
       action="#"
       onSubmit={(event) => {
         event.preventDefault();
+        const newPageId = goToPage(event, item);
+        changePageId(newPageId);
       }}
     >
       <FormTitle>Personal Info</FormTitle>
@@ -54,8 +60,8 @@ function PersonalInfoForm() {
         />
       </InputWrapper>
       <ButtonWrapper>
-        <LinkButton>Go Back</LinkButton>
-        <Button>Next Step</Button>
+        <LinkButton data-back={item.id}>Go Back</LinkButton>
+        <Button data-next={item.id}>Next Step</Button>
       </ButtonWrapper>
     </Form>
   );
@@ -79,8 +85,8 @@ const InputWrapper = styled.div`
 const ButtonWrapper = styled.div`
   margin-top: auto;
   margin-bottom: 16px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-auto-flow: column;
 `;
 
 export default PersonalInfoForm;

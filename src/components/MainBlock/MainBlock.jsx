@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import SidePanel from "../SidePanel/SidePanel";
 import FormArea from "../FormArea/FormArea";
+import PageProvider from "../PageProvider/PageProvider";
 
 function MainBlock() {
   return (
-    <Wrapper>
-      <SidePanel />
-      <FormArea />
-    </Wrapper>
+    <PageProvider>
+      <Wrapper>
+        <SidePanel />
+        <FormArea />
+      </Wrapper>
+    </PageProvider>
   );
 }
 
