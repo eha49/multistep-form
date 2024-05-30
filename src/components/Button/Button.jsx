@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+export const Button = styled.button`
   padding: 8px 18px;
   border: none;
   border-radius: 6px;
@@ -19,4 +19,18 @@ const Button = styled.button`
   }
 `;
 
-export default Button;
+export const LinkButton = styled(Button)`
+  padding: 0;
+  background-color: transparent;
+  color: var(--cool-gray);
+  font-weight: var(--weight-bold);
+
+  &:hover {
+    color: var(----marine-blue);
+    background: transparent;
+  }
+
+  &:focus-visible {
+    outline: 1px solid currentColor;
+  }
+`;

@@ -25,7 +25,6 @@ const InnerWrapper = styled.div`
   padding-top: 20px;
   min-height: 100%;
   display: flex;
-  flex-direction: column;
 `;
 
 export default FormArea;
