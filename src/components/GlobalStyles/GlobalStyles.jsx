@@ -33,7 +33,7 @@ const GlobalStyles = createGlobalStyle`
         background-color: var(--magnolia);
     }
 
-    body, h1, p, ol, li {
+    body, h1, h2, p, ol, li {
         margin: 0;
         padding: 0;
         border: 0;
