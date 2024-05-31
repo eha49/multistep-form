@@ -46,6 +46,11 @@ const PresentationalCard = styled.div`
 
   ${Radio}:checked + & {
     border: 1px solid var(--purplish-blue);
+    background-color: var(--magnolia);
+  }
+
+  ${Radio}:focus-visible + & {
+    outline: 1px solid var(--purplish-blue);
   }
 `;
 
@@ -56,12 +61,12 @@ const Icon = styled.img`
 `;
 
 const PlanTitle = styled.h2`
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-transform: capitalize;
 `;
 
 const PlanPrice = styled.p`
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--cool-gray);
 `;
 

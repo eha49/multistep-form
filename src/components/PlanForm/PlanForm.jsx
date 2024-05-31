@@ -3,6 +3,7 @@ import styled from "styled-components";
 import FormTitle from "../FormTitle/FormTitle";
 import FormDescription from "../FormDescription/FormDescription";
 import PlanCard from "../PlanCard/PlanCard";
+import ToggleBillingPeriodicity from "../ToggleBillingPeriodicity/ToggleBillingPeriodicity";
 import { Button, LinkButton } from "../Button/Button";
 import {
   Form,
@@ -39,6 +40,7 @@ function PlanForm({ item }) {
           );
         })}
       </PlanCardsWrapper>
+      <ToggleBillingPeriodicity />
       <ButtonWrapper>
         <LinkButton data-back={item.id}>Go Back</LinkButton>
         <Button data-next={item.id}>Next Step</Button>
