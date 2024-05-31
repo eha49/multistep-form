@@ -1,7 +1,10 @@
+import React from "react";
 import styled from "styled-components";
 import { LANDMARK_SEQUENCE } from "../../constant";
+import { PageContext } from "../PageProvider/PageProvider";
 
 function SidePanel() {
+  const { currentPageId } = React.useContext(PageContext);
   return (
     <SidePanelWrapper>
       <ol>
@@ -9,7 +12,12 @@ function SidePanel() {
           const step = index + 1;
           return (
             <Step key={option.id}>
-              <StepIndexIcon>{step}</StepIndexIcon>
+              <StepIndexIcon
+                $id={option.id}
+                $currentPageId={currentPageId}
+              >
+                {step}
+              </StepIndexIcon>
               <div>
                 <StepLabel>STEP {step}</StepLabel>
                 <StepDescription>
@@ -54,7 +62,12 @@ const StepIndexIcon = styled.div`
   border: 1px solid currentColor;
   border-radius: 50%;
   font-size: 0.8rem;
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-bold);
+  background-color: ${(props) =>
+    props.$id === props.$currentPageId && "var(--light-blue)"};
+  color: ${(props) =>
+    props.$id === props.$currentPageId && "var(--marine-blue)"};
+  border: ${(props) => props.$id === props.$currentPageId && "none"};
 `;
 
 const StepLabel = styled.p`
