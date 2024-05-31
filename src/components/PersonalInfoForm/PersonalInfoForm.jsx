@@ -60,7 +60,6 @@ function PersonalInfoForm({ item }) {
         />
       </InputWrapper>
       <ButtonWrapper>
-        <LinkButton data-back={item.id}>Go Back</LinkButton>
         <Button data-next={item.id}>Next Step</Button>
       </ButtonWrapper>
     </Form>
