@@ -1,36 +1,63 @@
+import React from "react";
 import styled from "styled-components";
+import { PlanContext } from "../PlanProvider/PlanProvider";
 
-function PlanCard() {
+function PlanCard({ name, price, icon }) {
+  const { selectedPlan, changePlan } = React.useContext(PlanContext);
+
   return (
-    <PlanWrapper>
-      <Icon
-        src="../../../src/assets/images/icon-arcade.svg"
-        alt="a plan icon"
+    <Wrapper>
+      <Radio
+        type="radio"
+        name={name}
+        id={name}
+        value={name}
+        checked={name === selectedPlan}
+        onChange={(event) => changePlan(event.target.value)}
       />
-      <PlanTitle>Arcade</PlanTitle>
-      <PlanPrice>$90/yr</PlanPrice>
-      <PlanBonus>2 months free</PlanBonus>
-    </PlanWrapper>
+      <PresentationalCard>
+        <Icon src={icon} alt="a plan icon" />
+        <PlanTitle>{name}</PlanTitle>
+        <PlanPrice>${price}/yr</PlanPrice>
+        <PlanBonus>2 months free</PlanBonus>
+      </PresentationalCard>
+    </Wrapper>
   );
 }
 
-const PlanWrapper = styled.div`
+const Wrapper = styled.div`
+  position: relative;
+`;
+
+const Radio = styled.input`
+  opacity: 0;
+  position: absolute;
+  margin: 0;
+  inset: 0;
+`;
+
+const PresentationalCard = styled.div`
   border: 1px solid var(--cool-gray);
   border-radius: 6px;
   padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+  ${Radio}:checked + & {
+    border: 1px solid var(--purplish-blue);
+  }
 `;
 
 const Icon = styled.img`
   width: 30px;
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 `;
 
 const PlanTitle = styled.h2`
   font-size: 0.9rem;
+  text-transform: capitalize;
 `;
 
 const PlanPrice = styled.p`
@@ -39,7 +66,7 @@ const PlanPrice = styled.p`
 `;
 
 const PlanBonus = styled.p`
-  font-size: 0.75rem;
+  font-size: 0.7rem;
 `;
 
 export default PlanCard;

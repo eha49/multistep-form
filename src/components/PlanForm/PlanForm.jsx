@@ -8,18 +8,36 @@ import {
   Form,
   ButtonWrapper,
 } from "../PersonalInfoForm/PersonalInfoForm";
+import { PageContext } from "../PageProvider/PageProvider";
+import { goToPage } from "../../helpers";
+import { PLANS } from "../../constant";
 
 function PlanForm({ item }) {
+  const { changePageId } = React.useContext(PageContext);
   return (
-    <Form action="#">
+    <Form
+      action="#"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const newPageId = goToPage(event, item);
+        changePageId(newPageId);
+      }}
+    >
       <FormTitle>Select your plan</FormTitle>
       <FormDescription>
         You have the option of monthly or yearly billing.
       </FormDescription>
       <PlanCardsWrapper>
-        <PlanCard />
-        <PlanCard />
-        <PlanCard />
+        {PLANS.map((plan) => {
+          return (
+            <PlanCard
+              key={plan.name}
+              name={plan.name}
+              icon={plan.icon}
+              price={plan.yearly}
+            />
+          );
+        })}
       </PlanCardsWrapper>
       <ButtonWrapper>
         <LinkButton data-back={item.id}>Go Back</LinkButton>
