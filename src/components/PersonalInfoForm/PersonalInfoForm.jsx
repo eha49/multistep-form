@@ -3,7 +3,7 @@ import styled from "styled-components";
 import FormTitle from "../FormTitle/FormTitle";
 import FormDescription from "../FormDescription/FormDescription";
 import TextInput from "../TextInput/TextInput";
-import { Button, LinkButton } from "../Button/Button";
+import { Button } from "../Button/Button";
 import { UserInfoContext } from "../UserInfoProvider/UserInfoProvider";
 import { PageContext } from "../PageProvider/PageProvider";
 import { goToPage } from "../../helpers";

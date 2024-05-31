@@ -24,10 +24,12 @@ function ToggleBillingPeriodicity() {
           Monthly
         </Label>
       </RadioWrapper>
-      <div>
-        <button>S</button>
-        <span></span>
-      </div>
+      <ButtonWrapper>
+        <Button type="button" onClick={handlePeriodicity}></Button>
+        <ToggleSwitch
+          $currentPeriodicity={currentPeriodicity}
+        ></ToggleSwitch>
+      </ButtonWrapper>
       <RadioWrapper>
         <RadioInput
           id="yearly"
@@ -57,6 +59,7 @@ const Wrapper = styled.div`
   border-radius: 6px;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 16px;
 `;
 
@@ -80,6 +83,50 @@ const Label = styled.label`
 
   ${RadioInput}:focus-visible + & {
     outline: 1px solid currentColor;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  position: relative;
+`;
+
+const Button = styled.button`
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  border: solid 1px;
+  cursor: pointer;
+`;
+
+const ToggleSwitch = styled.span`
+  --length: 28px;
+  display: flex;
+  align-items: center;
+  background-color: var(--marine-blue);
+  margin-left: -2px;
+  border-radius: 50px;
+  width: calc(var(--length) + 4px);
+  height: calc(var(--length) / 2 + 4px);
+  pointer-events: none;
+
+  &::before {
+    display: inline-block;
+    content: "";
+    width: calc(var(--length) / 2);
+    height: calc(var(--length) / 2);
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 50%;
+    background-color: var(--white);
+    transform: ${(props) =>
+      props.$currentPeriodicity === "monthly"
+        ? "translateX(0%)"
+        : "translateX(100%)"};
+  }
+
+  ${Button}:focus-visible + & {
+    outline: 1px solid currentColor;
+    outline-offset: 1px;
   }
 `;
 
