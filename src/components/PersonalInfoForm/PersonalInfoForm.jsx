@@ -67,6 +67,7 @@ function PersonalInfoForm({ item }) {
 }
 
 export const Form = styled.form`
+  flex-basis: 100%;
   display: flex;
   flex-direction: column;
 `;

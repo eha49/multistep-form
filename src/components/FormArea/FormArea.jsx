@@ -36,7 +36,7 @@ const FromWrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  width: fit-content;
+  width: 85%;
   margin-left: auto;
   margin-right: auto;
   padding-top: 20px;

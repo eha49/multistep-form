@@ -10,11 +10,16 @@ import {
   ButtonWrapper,
 } from "../PersonalInfoForm/PersonalInfoForm";
 import { PageContext } from "../PageProvider/PageProvider";
+import { BillingPeriodicityContext } from "../BillingPeriodProvider/BillingPeriodProvider";
 import { goToPage } from "../../helpers";
 import { PLANS } from "../../constant";
 
 function PlanForm({ item }) {
   const { changePageId } = React.useContext(PageContext);
+  const { currentPeriodicity } = React.useContext(
+    BillingPeriodicityContext
+  );
+
   return (
     <Form
       action="#"
@@ -35,7 +40,11 @@ function PlanForm({ item }) {
               key={plan.name}
               name={plan.name}
               icon={plan.icon}
-              price={plan.yearly}
+              price={
+                currentPeriodicity === "monthly"
+                  ? plan.monthly
+                  : plan.yearly
+              }
             />
           );
         })}

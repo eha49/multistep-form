@@ -1,9 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { PlanContext } from "../PlanProvider/PlanProvider";
+import { BillingPeriodicityContext } from "../BillingPeriodProvider/BillingPeriodProvider";
 
 function PlanCard({ name, price, icon }) {
   const { selectedPlan, changePlan } = React.useContext(PlanContext);
+  const { currentPeriodicity } = React.useContext(
+    BillingPeriodicityContext
+  );
 
   return (
     <Wrapper>
@@ -18,8 +22,15 @@ function PlanCard({ name, price, icon }) {
       <PresentationalCard>
         <Icon src={icon} alt="a plan icon" />
         <PlanTitle>{name}</PlanTitle>
-        <PlanPrice>${price}/yr</PlanPrice>
-        <PlanBonus>2 months free</PlanBonus>
+        <PlanPrice>
+          $
+          {currentPeriodicity === "monthly"
+            ? `${price}/mo`
+            : `${price}/yr`}
+        </PlanPrice>
+        {currentPeriodicity === "yearly" && (
+          <PlanBonus>2 months free</PlanBonus>
+        )}
       </PresentationalCard>
     </Wrapper>
   );
@@ -27,6 +38,7 @@ function PlanCard({ name, price, icon }) {
 
 const Wrapper = styled.div`
   position: relative;
+  flex-basis: 100px;
 `;
 
 const Radio = styled.input`
@@ -43,6 +55,7 @@ const PresentationalCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex: 1;
 
   ${Radio}:checked + & {
     border: 1px solid var(--purplish-blue);
@@ -63,6 +76,7 @@ const Icon = styled.img`
 const PlanTitle = styled.h2`
   font-size: 0.85rem;
   text-transform: capitalize;
+  color: var(--marine-blue);
 `;
 
 const PlanPrice = styled.p`
@@ -72,6 +86,7 @@ const PlanPrice = styled.p`
 
 const PlanBonus = styled.p`
   font-size: 0.7rem;
+  color: var(--marine-blue);
 `;
 
 export default PlanCard;
