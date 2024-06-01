@@ -5,7 +5,7 @@ export const PageContext = React.createContext();
 
 function PageProvider({ children }) {
   const [currentPageId, setCurrentPageId] = React.useState(
-    LANDMARK_SEQUENCE[1].id
+    LANDMARK_SEQUENCE[2].id
   );
   function changePageId(id) {
     setCurrentPageId(id);

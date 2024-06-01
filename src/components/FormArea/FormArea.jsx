@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PersonalInfoForm from "../PersonalInfoForm/PersonalInfoForm";
 import PlanForm from "../PlanForm/PlanForm";
+import AddOnsForm from "../AddOns/AddOns";
 import UserInfoProvider from "../UserInfoProvider/UserInfoProvider";
 import PlanProvider from "../PlanProvider/PlanProvider";
 import BillingPeriodicityProvider from "../BillingPeriodProvider/BillingPeriodProvider";
@@ -22,6 +23,9 @@ function FormArea() {
               {LANDMARK_SEQUENCE[1].id === currentPageId && (
                 <PlanForm item={LANDMARK_SEQUENCE[1]} />
               )}
+              {LANDMARK_SEQUENCE[2].id === currentPageId && (
+                <AddOnsForm item={LANDMARK_SEQUENCE[2]} />
+              )}
             </InnerWrapper>
           </FromWrapper>
         </BillingPeriodicityProvider>
@@ -36,7 +40,7 @@ const FromWrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  width: 85%;
+  width: 75%;
   margin-left: auto;
   margin-right: auto;
   padding-top: 20px;

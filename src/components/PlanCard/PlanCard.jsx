@@ -19,6 +19,7 @@ function PlanCard({ name, price, icon }) {
         checked={name === selectedPlan}
         onChange={(event) => changePlan(event.target.value)}
       />
+
       <PresentationalCard>
         <Icon src={icon} alt="a plan icon" />
         <PlanTitle>{name}</PlanTitle>
@@ -46,6 +47,7 @@ const Radio = styled.input`
   position: absolute;
   margin: 0;
   inset: 0;
+  cursor: pointer;
 `;
 
 const PresentationalCard = styled.div`
@@ -55,7 +57,6 @@ const PresentationalCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  flex: 1;
 
   ${Radio}:checked + & {
     border: 1px solid var(--purplish-blue);

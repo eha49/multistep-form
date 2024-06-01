@@ -37,3 +37,24 @@ export const PLANS = [
     yearly: 150,
   },
 ];
+
+export const ADD_ONS = [
+  {
+    title: "online service",
+    subTitle: "Access to multiplayer games",
+    monthly: 1,
+    yearly: 10,
+  },
+  {
+    title: "larger storage",
+    subTitle: "Extra 1TB of cloud storage",
+    monthly: 2,
+    yearly: 20,
+  },
+  {
+    title: "customizable profile",
+    subTitle: "Custom theme on your profile",
+    monthly: 2,
+    yearly: 20,
+  },
+];

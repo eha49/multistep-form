@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import FormTitle from "../FormTitle/FormTitle";
 import FormDescription from "../FormDescription/FormDescription";
-import PlanCard from "../PlanCard/PlanCard";
-import ToggleBillingPeriodicity from "../ToggleBillingPeriodicity/ToggleBillingPeriodicity";
+import AddOnsCard from "../AddOnsCard/AddOnsCard";
 import { Button, LinkButton } from "../Button/Button";
 import {
   Form,
@@ -12,9 +11,9 @@ import {
 import { PageContext } from "../PageProvider/PageProvider";
 import { BillingPeriodicityContext } from "../BillingPeriodProvider/BillingPeriodProvider";
 import { goToPage } from "../../helpers";
-import { PLANS } from "../../constant";
+import { ADD_ONS } from "../../constant";
 
-function PlanForm({ item }) {
+function AddOnsForm({ item }) {
   const { changePageId } = React.useContext(PageContext);
   const { currentPeriodicity } = React.useContext(
     BillingPeriodicityContext
@@ -29,27 +28,26 @@ function PlanForm({ item }) {
         changePageId(newPageId);
       }}
     >
-      <FormTitle>Select your plan</FormTitle>
+      <FormTitle>Pick add-ons</FormTitle>
       <FormDescription>
-        You have the option of monthly or yearly billing.
+        Add-ons help enhance your gaming experience.
       </FormDescription>
-      <PlanCardsWrapper>
-        {PLANS.map((plan) => {
+      <AddOnsWrapper>
+        {ADD_ONS.map((option) => {
           return (
-            <PlanCard
-              key={plan.name}
-              name={plan.name}
-              icon={plan.icon}
+            <AddOnsCard
+              key={option.title}
+              title={option.title}
+              subTitle={option.subTitle}
               price={
                 currentPeriodicity === "monthly"
-                  ? plan.monthly
-                  : plan.yearly
+                  ? option.monthly
+                  : option.yearly
               }
             />
           );
         })}
-      </PlanCardsWrapper>
-      <ToggleBillingPeriodicity />
+      </AddOnsWrapper>
       <ButtonWrapper>
         <LinkButton data-back={item.id}>Go Back</LinkButton>
         <Button data-next={item.id}>Next Step</Button>
@@ -58,10 +56,11 @@ function PlanForm({ item }) {
   );
 }
 
-const PlanCardsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
+const AddOnsWrapper = styled.div`
   margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;
 
-export default PlanForm;
+export default AddOnsForm;

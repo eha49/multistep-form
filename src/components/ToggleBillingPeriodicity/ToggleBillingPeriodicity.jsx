@@ -70,6 +70,7 @@ const RadioWrapper = styled.div`
 const RadioInput = styled.input`
   opacity: 0;
   position: absolute;
+  pointer-events: none;
 `;
 
 const Label = styled.label`
