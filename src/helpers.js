@@ -39,3 +39,21 @@ export function getPlan(key) {
 
   return requiredPlan;
 }
+
+export function calculateTotalPrice(
+  selectedPlan,
+  addOns,
+  currentPeriodicity
+) {
+  let sum = getPlan(selectedPlan)[currentPeriodicity];
+
+  const addOnsApplied = ADD_ONS.filter((item) => {
+    return addOns[item.id];
+  });
+
+  addOnsApplied.forEach((item) => {
+    sum += item[currentPeriodicity];
+  });
+
+  return sum;
+}

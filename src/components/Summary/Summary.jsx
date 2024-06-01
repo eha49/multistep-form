@@ -13,7 +13,12 @@ import { PlanContext } from "../PlanProvider/PlanProvider";
 import { AddOnsContext } from "../AddOnsProvider/AddOnsProvider";
 
 import { ADD_ONS } from "../../constant";
-import { goToPage, getPlanPageId, getPlan } from "../../helpers";
+import {
+  goToPage,
+  getPlanPageId,
+  getPlan,
+  calculateTotalPrice,
+} from "../../helpers";
 
 function Summary({ item }) {
   const { changePageId } = React.useContext(PageContext);
@@ -24,6 +29,11 @@ function Summary({ item }) {
   const { addOns } = React.useContext(AddOnsContext);
 
   const planPageId = getPlanPageId();
+  const totalPrice = calculateTotalPrice(
+    selectedPlan,
+    addOns,
+    currentPeriodicity
+  );
   return (
     <Wrapper
       action="#"
@@ -78,8 +88,18 @@ function Summary({ item }) {
         })}
       </BillingSummary>
       <TotalPrice>
-        <span>Total</span>
-        <span>+$12/mo</span>
+        {currentPeriodicity === "monthly" && (
+          <>
+            <span>Total (per month)</span>
+            <span>+${totalPrice}/mo</span>
+          </>
+        )}
+        {currentPeriodicity === "yearly" && (
+          <>
+            <span>Total (per year)</span>
+            <span>+${totalPrice}/yr</span>
+          </>
+        )}
       </TotalPrice>
       <ButtonWrapper>
         <LinkButton data-back={item.id}>Go Back</LinkButton>

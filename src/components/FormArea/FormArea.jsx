@@ -43,7 +43,6 @@ function FormArea() {
 
 const FromWrapper = styled.div`
   flex: 1;
-  border: 1px solid;
 `;
 
 const InnerWrapper = styled.div`
