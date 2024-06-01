@@ -1,4 +1,4 @@
-import { LANDMARK_SEQUENCE, ADD_ONS } from "./constant";
+import { LANDMARK_SEQUENCE, ADD_ONS, PLANS } from "./constant";
 
 export function goToPage(event, item) {
   const index = LANDMARK_SEQUENCE.indexOf(item);
@@ -22,4 +22,20 @@ export function createAddOnsState() {
   });
 
   return addOnsState;
+}
+
+export function getPlanPageId() {
+  const requiredLandmark = LANDMARK_SEQUENCE.filter((plan) => {
+    return plan.label === "select plan";
+  })[0];
+  const planPageId = requiredLandmark.id;
+  return planPageId;
+}
+
+export function getPlan(key) {
+  const requiredPlan = PLANS.filter((plan) => {
+    return plan.name === key;
+  })[0];
+
+  return requiredPlan;
 }

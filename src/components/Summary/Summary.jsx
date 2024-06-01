@@ -8,10 +8,22 @@ import {
   ButtonWrapper,
 } from "../PersonalInfoForm/PersonalInfoForm";
 import { PageContext } from "../PageProvider/PageProvider";
-import { goToPage } from "../../helpers";
+import { BillingPeriodicityContext } from "../BillingPeriodProvider/BillingPeriodProvider";
+import { PlanContext } from "../PlanProvider/PlanProvider";
+import { AddOnsContext } from "../AddOnsProvider/AddOnsProvider";
+
+import { ADD_ONS } from "../../constant";
+import { goToPage, getPlanPageId, getPlan } from "../../helpers";
 
 function Summary({ item }) {
   const { changePageId } = React.useContext(PageContext);
+  const { selectedPlan } = React.useContext(PlanContext);
+  const { currentPeriodicity } = React.useContext(
+    BillingPeriodicityContext
+  );
+  const { addOns } = React.useContext(AddOnsContext);
+
+  const planPageId = getPlanPageId();
   return (
     <Wrapper
       action="#"
@@ -28,19 +40,42 @@ function Summary({ item }) {
       <BillingSummary>
         <MainPlanWrapper>
           <div>
-            <MainPlan>Arcade</MainPlan>
-            <ChangePlan type="button">Change</ChangePlan>
+            <MainPlan>
+              {selectedPlan} ({currentPeriodicity})
+            </MainPlan>
+            <ChangePlan
+              type="button"
+              onClick={() => changePageId(planPageId)}
+            >
+              Change
+            </ChangePlan>
           </div>
-          <MainPlanPrice>$9/mo</MainPlanPrice>
+          {currentPeriodicity === "monthly" && (
+            <MainPlanPrice>
+              ${getPlan(selectedPlan).monthly}/mo
+            </MainPlanPrice>
+          )}
+          {currentPeriodicity === "yearly" && (
+            <MainPlanPrice>
+              ${getPlan(selectedPlan).yearly}/yr
+            </MainPlanPrice>
+          )}
         </MainPlanWrapper>
-        <AddOn>
-          <span>Online Service</span>
-          <span>+$1/mo</span>
-        </AddOn>
-        <AddOn>
-          <span>Larger Storage</span>
-          <span>+$2/mo</span>
-        </AddOn>
+        {ADD_ONS.map((item) => {
+          return (
+            addOns[item.id] && (
+              <AddOn key={item.id}>
+                <span>{item.title}</span>
+                {currentPeriodicity === "monthly" && (
+                  <span>+${item.monthly}/mo</span>
+                )}
+                {currentPeriodicity === "yearly" && (
+                  <span>+${item.yearly}/yr</span>
+                )}
+              </AddOn>
+            )
+          );
+        })}
       </BillingSummary>
       <TotalPrice>
         <span>Total</span>
@@ -59,32 +94,36 @@ const Wrapper = styled(Form)`
 `;
 
 const BillingSummary = styled.div`
-  border: 1px solid;
   margin-top: 32px;
   margin-bottom: 20px;
   padding: var(--spacing);
   border-radius: 6px;
+  background-color: var(--magnolia);
 `;
 
 const MainPlanWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-transform: capitalize;
 `;
 
 const MainPlan = styled.p`
   font-size: 0.85rem;
   font-weight: var(--weight-bold);
   color: var(--marine-blue);
+  margin-bottom: 2px;
 `;
 
 const ChangePlan = styled(LinkButton)`
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: var(--weight-regular);
   text-decoration: underline;
 `;
 
-const MainPlanPrice = styled(MainPlan)``;
+const MainPlanPrice = styled(MainPlan)`
+  text-transform: lowercase;
+`;
 
 const AddOn = styled.p`
   padding-top: 12px;
@@ -94,9 +133,14 @@ const AddOn = styled.p`
   justify-content: space-between;
 
   &:first-of-type {
-    border-top: 1px solid var(--cool-gray);
+    border-top: 1px solid var(--light-gray);
     margin-top: var(--spacing);
   }
+
+  & span:first-child {
+    text-transform: capitalize;
+  }
+
   & span:last-child {
     color: var(--marine-blue);
   }
