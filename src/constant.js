@@ -44,17 +44,20 @@ export const ADD_ONS = [
     subTitle: "Access to multiplayer games",
     monthly: 1,
     yearly: 10,
+    id: "onl-service",
   },
   {
     title: "larger storage",
     subTitle: "Extra 1TB of cloud storage",
     monthly: 2,
     yearly: 20,
+    id: "lg-storage",
   },
   {
     title: "customizable profile",
     subTitle: "Custom theme on your profile",
     monthly: 2,
     yearly: 20,
+    id: "custom-profile",
   },
 ];

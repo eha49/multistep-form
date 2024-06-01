@@ -1,4 +1,4 @@
-import { LANDMARK_SEQUENCE } from "./constant";
+import { LANDMARK_SEQUENCE, ADD_ONS } from "./constant";
 
 export function goToPage(event, item) {
   const index = LANDMARK_SEQUENCE.indexOf(item);
@@ -13,4 +13,13 @@ export function goToPage(event, item) {
   ) {
     return previousElement.id;
   }
+}
+
+export function createAddOnsState() {
+  const addOnsState = {};
+  ADD_ONS.forEach((option) => {
+    addOnsState[option.id] = false;
+  });
+
+  return addOnsState;
 }

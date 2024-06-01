@@ -6,6 +6,7 @@ import AddOnsForm from "../AddOns/AddOns";
 import UserInfoProvider from "../UserInfoProvider/UserInfoProvider";
 import PlanProvider from "../PlanProvider/PlanProvider";
 import BillingPeriodicityProvider from "../BillingPeriodProvider/BillingPeriodProvider";
+import AddOnsProvider from "../AddOnsProvider/AddOnsProvider";
 import { PageContext } from "../PageProvider/PageProvider";
 import { LANDMARK_SEQUENCE } from "../../constant";
 
@@ -15,19 +16,21 @@ function FormArea() {
     <UserInfoProvider>
       <PlanProvider>
         <BillingPeriodicityProvider>
-          <FromWrapper>
-            <InnerWrapper>
-              {LANDMARK_SEQUENCE[0].id === currentPageId && (
-                <PersonalInfoForm item={LANDMARK_SEQUENCE[0]} />
-              )}
-              {LANDMARK_SEQUENCE[1].id === currentPageId && (
-                <PlanForm item={LANDMARK_SEQUENCE[1]} />
-              )}
-              {LANDMARK_SEQUENCE[2].id === currentPageId && (
-                <AddOnsForm item={LANDMARK_SEQUENCE[2]} />
-              )}
-            </InnerWrapper>
-          </FromWrapper>
+          <AddOnsProvider>
+            <FromWrapper>
+              <InnerWrapper>
+                {LANDMARK_SEQUENCE[0].id === currentPageId && (
+                  <PersonalInfoForm item={LANDMARK_SEQUENCE[0]} />
+                )}
+                {LANDMARK_SEQUENCE[1].id === currentPageId && (
+                  <PlanForm item={LANDMARK_SEQUENCE[1]} />
+                )}
+                {LANDMARK_SEQUENCE[2].id === currentPageId && (
+                  <AddOnsForm item={LANDMARK_SEQUENCE[2]} />
+                )}
+              </InnerWrapper>
+            </FromWrapper>
+          </AddOnsProvider>
         </BillingPeriodicityProvider>
       </PlanProvider>
     </UserInfoProvider>

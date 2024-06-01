@@ -36,7 +36,8 @@ function AddOnsForm({ item }) {
         {ADD_ONS.map((option) => {
           return (
             <AddOnsCard
-              key={option.title}
+              key={option.id}
+              id={option.id}
               title={option.title}
               subTitle={option.subTitle}
               price={

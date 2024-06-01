@@ -1,16 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 import { BillingPeriodicityContext } from "../BillingPeriodProvider/BillingPeriodProvider";
+import { AddOnsContext } from "../AddOnsProvider/AddOnsProvider";
 
-function AddOnsCard({ title, subTitle, price }) {
+function AddOnsCard({ title, id, subTitle, price }) {
   const { currentPeriodicity } = React.useContext(
     BillingPeriodicityContext
   );
+  const { addOns, handleAddOns } = React.useContext(AddOnsContext);
+
   return (
     <Wrapper>
-      <input type="checkbox" id={title} name={title} />
+      <input
+        type="checkbox"
+        id={id}
+        name={id}
+        value={id}
+        checked={addOns[id]}
+        onChange={handleAddOns}
+      />
       <div>
-        <Label htmlFor={title}>{title}</Label>
+        <Label htmlFor={id}>{title}</Label>
         <Description>{subTitle}</Description>
       </div>
       <AddOnPrice>
