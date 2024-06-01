@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PersonalInfoForm from "../PersonalInfoForm/PersonalInfoForm";
 import PlanForm from "../PlanForm/PlanForm";
-import AddOnsForm from "../AddOns/AddOns";
+import AddOnsForm from "../AddOnsForm/AddOnsForm";
 import UserInfoProvider from "../UserInfoProvider/UserInfoProvider";
 import PlanProvider from "../PlanProvider/PlanProvider";
 import BillingPeriodicityProvider from "../BillingPeriodProvider/BillingPeriodProvider";

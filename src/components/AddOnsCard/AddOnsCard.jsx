@@ -37,6 +37,8 @@ const Wrapper = styled.div`
   border: 1px solid var(--cool-gray);
   border-color: ${(props) =>
     props.$isSelected && "var(--purplish-blue)"};
+  background-color: ${(props) =>
+    props.$isSelected && "var(--magnolia)"};
   border-radius: 6px;
   display: flex;
   align-items: center;
