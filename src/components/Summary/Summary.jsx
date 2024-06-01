@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import FormTitle from "../FormTitle/FormTitle";
 import FormDescription from "../FormDescription/FormDescription";
+import Success from "../Success/Success";
 import { Button, LinkButton } from "../Button/Button";
 import {
   Form,
@@ -21,6 +22,7 @@ import {
 } from "../../helpers";
 
 function Summary({ item }) {
+  const [success, setSuccess] = React.useState(false);
   const { changePageId } = React.useContext(PageContext);
   const { selectedPlan } = React.useContext(PlanContext);
   const { currentPeriodicity } = React.useContext(
@@ -34,6 +36,11 @@ function Summary({ item }) {
     addOns,
     currentPeriodicity
   );
+
+  if (success) {
+    return <Success />;
+  }
+
   return (
     <Wrapper
       action="#"
@@ -103,7 +110,12 @@ function Summary({ item }) {
       </TotalPrice>
       <ButtonWrapper>
         <LinkButton data-back={item.id}>Go Back</LinkButton>
-        <ConfirmButton type="button">Confirm</ConfirmButton>
+        <ConfirmButton
+          type="button"
+          onClick={() => setSuccess(!success)}
+        >
+          Confirm
+        </ConfirmButton>
       </ButtonWrapper>
     </Wrapper>
   );
