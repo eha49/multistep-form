@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PersonalInfoForm from "../PersonalInfoForm/PersonalInfoForm";
 import PlanForm from "../PlanForm/PlanForm";
 import AddOnsForm from "../AddOnsForm/AddOnsForm";
+import Summary from "../Summary/Summary";
 import UserInfoProvider from "../UserInfoProvider/UserInfoProvider";
 import PlanProvider from "../PlanProvider/PlanProvider";
 import BillingPeriodicityProvider from "../BillingPeriodProvider/BillingPeriodProvider";
@@ -27,6 +28,9 @@ function FormArea() {
                 )}
                 {LANDMARK_SEQUENCE[2].id === currentPageId && (
                   <AddOnsForm item={LANDMARK_SEQUENCE[2]} />
+                )}
+                {LANDMARK_SEQUENCE[3].id === currentPageId && (
+                  <Summary item={LANDMARK_SEQUENCE[3]} />
                 )}
               </InnerWrapper>
             </FromWrapper>
