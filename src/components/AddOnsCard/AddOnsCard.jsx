@@ -10,7 +10,7 @@ function AddOnsCard({ title, id, subTitle, price }) {
   const { addOns, handleAddOns } = React.useContext(AddOnsContext);
 
   return (
-    <Wrapper>
+    <Wrapper $isSelected={addOns[id]}>
       <input
         type="checkbox"
         id={id}
@@ -35,6 +35,8 @@ function AddOnsCard({ title, id, subTitle, price }) {
 
 const Wrapper = styled.div`
   border: 1px solid var(--cool-gray);
+  border-color: ${(props) =>
+    props.$isSelected && "var(--purplish-blue)"};
   border-radius: 6px;
   display: flex;
   align-items: center;
